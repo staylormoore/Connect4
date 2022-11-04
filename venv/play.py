@@ -1,1 +1,2 @@
 # play class
+import pygame
