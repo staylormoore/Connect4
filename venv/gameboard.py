@@ -1,5 +1,7 @@
 # gameboard class
 import pygame
+
+
 class Gameboard:
     # Define some colors
     BLACK = (0, 0, 0)
