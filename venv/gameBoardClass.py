@@ -32,7 +32,8 @@ class Gameboard:
     rect_change_y = 5
 
     # This is a font we use to draw text on the screen (size 36)
-    font = pygame.font.Font(None, 36)
+    title_font = pygame.font.SysFont('Roboto', 100)
+    font = pygame.font.SysFont('Roboto', 36)
 
     display_instructions = True
     instruction_page = 1
