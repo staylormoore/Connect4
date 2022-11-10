@@ -8,6 +8,7 @@ class Gameboard:
     WHITE = (255, 255, 255)
     GREEN = (0, 255, 0)
     RED = (255, 0, 0)
+    AQUA = (24,116,205)
 
     pygame.init()
 
@@ -49,18 +50,18 @@ class Gameboard:
                     display_instructions = False
 
         # Set the screen background
-        screen.fill(BLACK)
+        screen.fill(AQUA)
 
         if instruction_page == 1:
             # Draw instructions, page 1
             # This could also load an image created in another program.
             # That could be both easier and more flexible.
 
-            text = font.render("Welcome to Connect 4", True, WHITE)
-            screen.blit(text, [370, 300])
+            text = title_font.render("Welcome to Connect 4", True, WHITE)
+            screen.blit(text, [130, 280])
 
-            text = font.render("Click to Continue", True, WHITE)
-            screen.blit(text, [395, 350])
+            text = font.render("(Click to Continue)", True, WHITE)
+            screen.blit(text, [395, 380])
 
         if instruction_page == 2:
             # Draw instructions, page 2
@@ -83,7 +84,7 @@ class Gameboard:
                 done = True
 
         # Set the screen background
-        screen.fill(BLACK)
+        screen.fill(WHITE)
 
         # Draw the rectangle
         pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
