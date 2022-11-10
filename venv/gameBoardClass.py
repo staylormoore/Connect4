@@ -34,6 +34,7 @@ class Gameboard:
 
     # This is a font we use to draw text on the screen (size 36)
     title_font = pygame.font.SysFont('Roboto', 100)
+    subtitle = pygame.font.SysFont('Roboto', 50)
     font = pygame.font.SysFont('Roboto', 36)
 
     display_instructions = True
@@ -65,11 +66,23 @@ class Gameboard:
 
         if instruction_page == 2:
             # Draw instructions, page 2
-            text = font.render("This program bounces a rectangle", True, WHITE)
+            text = subtitle.render("Goal of the Game:", True, WHITE)
             screen.blit(text, [10, 10])
 
-            text = font.render("Page 2", True, WHITE)
-            screen.blit(text, [10, 40])
+            text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
+            screen.blit(text, [10, 60])
+
+            text = subtitle.render("Instructions:", True, WHITE)
+            screen.blit(text, [10, 110])
+
+            text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
+            screen.blit(text, [10, 150])
+
+            text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
+            screen.blit(text, [10, 180])
+
+            text = font.render("2. You can win by getting 4 in a row horizontally, vertically, or diagonally", True, WHITE)
+            screen.blit(text, [10, 220])
 
         # Limit to 60 frames per second
         clock.tick(60)
