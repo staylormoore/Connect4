@@ -56,10 +56,10 @@ class Gameboard:
             # That could be both easier and more flexible.
 
             text = font.render("Welcome to Connect 4", True, WHITE)
-            screen.blit(text, [10, 10])
+            screen.blit(text, [370, 300])
 
             text = font.render("Click to Continue", True, WHITE)
-            screen.blit(text, [10, 40])
+            screen.blit(text, [395, 350])
 
         if instruction_page == 2:
             # Draw instructions, page 2
