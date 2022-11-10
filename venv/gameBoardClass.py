@@ -6,9 +6,9 @@ class Gameboard:
     # Define some colors
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
-    GREEN = (0, 255, 0)
-    RED = (255, 0, 0)
-    AQUA = (24,116,205)
+    RED = (255, 64, 64)
+    YELLOW = (255, 215, 0)
+    AQUA = (24, 116, 205)
 
     pygame.init()
 
