@@ -12,10 +12,10 @@ class Gameboard:
     pygame.init()
 
     # Set the height and width of the screen
-    size = [1000, 700]
+    size = [700, 500]
     screen = pygame.display.set_mode(size)
 
-    pygame.display.set_caption("Welcome to Connect 4")
+    pygame.display.set_caption("Instruction Screen")
 
     # Loop until the user clicks the close button.
     done = False
@@ -55,7 +55,7 @@ class Gameboard:
             # This could also load an image created in another program.
             # That could be both easier and more flexible.
 
-            text = font.render("Welcome to Connect 4", True, WHITE)
+            text = font.render("Instructions", True, WHITE)
             screen.blit(text, [10, 10])
 
             text = font.render("Page 1", True, WHITE)
