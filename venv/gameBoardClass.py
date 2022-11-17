@@ -89,6 +89,7 @@ class Gameboard:
             if event.type == pygame.QUIT:
                 done = True
 
+
         # Set the screen background
         screen.fill(WHITE)
 
