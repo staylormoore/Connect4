@@ -6,9 +6,9 @@ class Gameboard:
     # Define some colors
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
-    RED = (255, 64, 64)
-    YELLOW = (255, 215, 0)
-    AQUA = (24, 116, 205)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+    AQUA = (24,116,205)
 
     pygame.init()
 
@@ -24,17 +24,8 @@ class Gameboard:
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
-    # Starting position of the rectangle
-    rect_x = 50
-    rect_y = 50
-
-    # Speed and direction of rectangle
-    rect_change_x = 5
-    rect_change_y = 5
-
     # This is a font we use to draw text on the screen (size 36)
     title_font = pygame.font.SysFont('Roboto', 100)
-    subtitle = pygame.font.SysFont('Roboto', 50)
     font = pygame.font.SysFont('Roboto', 36)
 
     display_instructions = True
@@ -66,23 +57,11 @@ class Gameboard:
 
         if instruction_page == 2:
             # Draw instructions, page 2
-            text = subtitle.render("Goal of the Game:", True, WHITE)
+            text = font.render("This program bounces a rectangle", True, WHITE)
             screen.blit(text, [10, 10])
 
-            text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
-            screen.blit(text, [10, 60])
-
-            text = subtitle.render("Instructions:", True, WHITE)
-            screen.blit(text, [10, 110])
-
-            text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
-            screen.blit(text, [10, 150])
-
-            text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
-            screen.blit(text, [10, 180])
-
-            text = font.render("2. You can win by getting 4 in a row horizontally, vertically, or diagonally", True, WHITE)
-            screen.blit(text, [10, 220])
+            text = font.render("Page 2", True, WHITE)
+            screen.blit(text, [10, 40])
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -98,19 +77,6 @@ class Gameboard:
 
         # Set the screen background
         screen.fill(WHITE)
-
-        # Draw the rectangle
-        pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
-
-        # Move the rectangle starting point
-        rect_x += rect_change_x
-        rect_y += rect_change_y
-
-        # Bounce the ball if needed
-        if rect_y > 450 or rect_y < 0:
-            rect_change_y = rect_change_y * -1
-        if rect_x > 650 or rect_x < 0:
-            rect_change_x = rect_change_x * -1
 
         # Limit to 60 frames per second
         clock.tick(60)
