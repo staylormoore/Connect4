@@ -3,12 +3,12 @@ import pygame
 
 
 class Gameboard:
-    # Define some colors
+    # Define colors
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     GREEN = (0, 255, 0)
-    RED = (255, 0, 0)
-    AQUA = (24,116,205)
+    RED = (255, 50, 64)
+    AQUA = (24, 116, 205)
 
     pygame.init()
 
@@ -32,6 +32,9 @@ class Gameboard:
     display_instructions = True
     instruction_page = 1
 
+    # create a surface object for the Connect4 logo, image is drawn on it
+    logo = pygame.image.load("/Users/sammacbookpro/PycharmProjects/Adv-python/Connect4/venv/Connect4copy.png").convert()
+
     # -------- Instruction Page Loop -----------
     while not done and display_instructions:
         for event in pygame.event.get():
@@ -43,18 +46,19 @@ class Gameboard:
                     display_instructions = False
 
         # Set the screen background
-        screen.fill(AQUA)
+        screen.fill(BLACK)
 
         if instruction_page == 1:
             # Draw instructions, page 1
             # This could also load an image created in another program.
             # That could be both easier and more flexible.
 
-            text = title_font.render("Welcome to Connect 4", True, WHITE)
-            screen.blit(text, [130, 280])
+            text = title_font.render("Welcome to", True, RED)
+            screen.blit(text, [300, 165])
+            screen.blit(logo, (115, 225))
 
-            text = font.render("(Click to Continue)", True, WHITE)
-            screen.blit(text, [395, 380])
+            text = font.render("(Click to Continue)", True, RED)
+            screen.blit(text, [380, 465])
 
         if instruction_page == 2:
             # Draw instructions, page 2
