@@ -37,7 +37,7 @@ class Gameboard:
 
     # -------- Instruction Page Loop -----------
     while not done and display_instructions:
-        for event in pygame.event.get():
+        for event in pygame.event.get():Add
             if event.type == pygame.QUIT:
                 done = True
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -62,13 +62,13 @@ class Gameboard:
 
         if instruction_page == 2:
             # Draw instructions, page 2
-            text = subtitle.render("Goal of the Game:", True, WHITE)
+            text = subtitle.render("Goal of the Game:", True, RED)
             screen.blit(text, [10, 10])
 
             text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
             screen.blit(text, [10, 60])
 
-            text = subtitle.render("Instructions:", True, WHITE)
+            text = subtitle.render("Instructions:", True, RED)
             screen.blit(text, [10, 110])
 
             text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
@@ -92,7 +92,6 @@ class Gameboard:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-
 
         # Set the screen background
         screen.fill(WHITE)
