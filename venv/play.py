@@ -2,8 +2,6 @@
 import pygame
 
 class Play:
-    def main(self):
-        return 1
 
     def winning_move(board, piece):
         # Check horizontal locations for win
