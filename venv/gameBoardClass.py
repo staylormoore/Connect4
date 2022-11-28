@@ -1,6 +1,6 @@
 # gameboard class
 import pygame
-from main import Main
+
 
 class Gameboard:
     # Define colors
@@ -11,7 +11,6 @@ class Gameboard:
     AQUA = (24, 116, 205)
 
     pygame.init()
-    main = Main()
 
     # Set the height and width of the screen
     size = [1000, 700]
@@ -34,7 +33,10 @@ class Gameboard:
     instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
-    logo = pygame.image.load("/Users/devoncleaver/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
+    logo = pygame.image.load("/Users/carolinenorton/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
+
+    pygame.mixer.music.load("pygamemusic.mp3")
+    pygame.mixer.music.play(-1)
 
     # -------- Instruction Page Loop -----------
     while not done and display_instructions:
@@ -88,14 +90,14 @@ class Gameboard:
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 
-
-
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get():
-            main.main()
             if event.type == pygame.QUIT:
                 done = True
+
+        # Set the screen background
+        screen.fill(WHITE)
 
         # Limit to 60 frames per second
         clock.tick(60)
