@@ -1,6 +1,6 @@
 # gameboard class
 import pygame
-
+from main import Main
 
 class Gameboard:
     # Define colors
@@ -11,6 +11,7 @@ class Gameboard:
     AQUA = (24, 116, 205)
 
     pygame.init()
+    main = Main()
 
     # Set the height and width of the screen
     size = [1000, 700]
@@ -26,8 +27,8 @@ class Gameboard:
 
     # This is a font we use to draw text on the screen (size 36)
     title_font = pygame.font.SysFont('Roboto', 100)
-    subtitle = pygame.font.SysFont('Roboto', 50)
-    font = pygame.font.SysFont('Roboto', 36)
+    subtitle = pygame.font.SysFont('Roboto', 74)
+    font = pygame.font.SysFont('Roboto', 45)
 
     display_instructions = True
     instruction_page = 1
@@ -68,21 +69,42 @@ class Gameboard:
             text = subtitle.render("Goal of the Game:", True, RED)
             screen.blit(text, [10, 10])
 
-            text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
-            screen.blit(text, [10, 60])
+            text = font.render("The goal of Connect 4 is to get 4 discs in a row before", True, WHITE)
+            screen.blit(text, [10, 65])
+
+            text = font.render("your opponent", True, WHITE)
+            screen.blit(text, [10, 90])
 
             text = subtitle.render("Instructions:", True, RED)
-            screen.blit(text, [10, 110])
+            screen.blit(text, [10, 130])
 
             text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
-            screen.blit(text, [10, 150])
+            screen.blit(text, [10, 190])
 
             text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
-            screen.blit(text, [10, 180])
-
-            text = font.render("2. You can win by getting 4 in a row horizontally, vertically, or diagonally", True,
-                               WHITE)
             screen.blit(text, [10, 220])
+
+            text = font.render("2. You can win by getting 4 in a row horizontally, vertically,", True,
+                               WHITE)
+            screen.blit(text, [10, 265])
+
+            text = font.render("    or diagonally", True,
+                               WHITE)
+            screen.blit(text, [10, 293])
+
+            text = font.render("3. Once it is your turn, click the button at the bottom of the column", True,
+                               WHITE)
+            screen.blit(text, [10, 334])
+
+            text = font.render("    you would like to play in", True, WHITE)
+            screen.blit(text, [10, 365])
+
+            text = font.render("4. If you would like to go back to the instructions page or quit use ", True,
+                               WHITE)
+            screen.blit(text, [10, 420])
+
+            text = font.render("    the corresponding buttons on the left", True, WHITE)
+            screen.blit(text, [10, 457])
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -93,11 +115,9 @@ class Gameboard:
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get():
+            main.main()
             if event.type == pygame.QUIT:
                 done = True
-
-        # Set the screen background
-        screen.fill(WHITE)
 
         # Limit to 60 frames per second
         clock.tick(60)

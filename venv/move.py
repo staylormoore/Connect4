@@ -1,16 +1,46 @@
 import pygame
 from pygame import mouse
+from board import Board
 
 from constants import BLACK, WIDTH, HEIGHT, WHITE, YELLOW, RED, AQUA
+
+
 class Play:
     # def __init__(self, player, ):
        #  self.player = player
 
     def Winner(self):
-        return False
+        # check horizontal for win
+        for c in range(COL):
+            for r in range(ROW):
+                piece = self.board[r][c]
+                if self.board[r][c + 1] == piece and self.board[r][c + 2] == piece and self.board[r][c + 3] == piece:
+                    return True
+
+        # Check vertical locations for win
+        for c in range(COL):
+            for r in range(ROW):
+                piece = self.board[r][c]
+                if self.board[r + 1][c] == piece and self.board[r + 2][c] == piece and self.board[r + 3][c] == piece:
+                    return True
+
+        # Check positively sloped diaganols
+        for c in range(COL):
+            for r in range(ROW):
+                piece = self.board[r][c]
+                if board[r + 1][c + 1] == piece and board[r + 2][c + 2] == piece and board[r + 3][c + 3] == piece:
+                    return True
+
+        # Check negatively sloped diaganols
+        for c in range(COL):
+            for r in range(ROW):
+                piece = self.board[r][c]
+                if self.board[r - 1][c + 1] == piece and \
+                        self.board[r - 2][c + 2] == piece and self.board[r - 3][c + 3] == piece:
+                    return True
 
     def move(self, player, WIN):
-        while self.Winner() == False:
+        while self.Winner() is False:
             for event in pygame.event.get():
                 pygame.init()
                 font = pygame.font.Font('freesansbold.ttf', 32)
