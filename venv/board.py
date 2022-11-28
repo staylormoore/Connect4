@@ -37,14 +37,14 @@ class Board:
 
     def IsFull(self, col):
         for row in range(len(self.board)):
-            if board[row][col] == 0:
+            if self.board[row][col] == 0:
                 return False
         return True
 
     def updateBoard(self, col, PL, win):
         pos = 5
         num = 5
-        if IsFull(col) == True:
+        if self.IsFull(col) == True:
             pass
         for row in range(6):
             if self.board[num][col] == 0:
