@@ -10,22 +10,20 @@ class Main:
     WIN = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption('Connect 4')
 
-    def main(self):
-        run = True
+    def main(self): # runs the game aspect of our code
         clock = pygame.time.Clock()
         board = Board()
         play = Play()
         PL = 1
-        while run:
+        while play.Winner() == False: # while there is no winner
             clock.tick(60)
-            for event in pygame.event.get():
-                while play.Winner() == False:
-                    board.drawBoard(self.WIN)
-                    num = play.move(PL, self.WIN)
-                    board.updateBoard(num, PL, self.WIN)
-                    if PL == 1:
-                        PL = 2
-                    else:
-                        PL = 1
-                    pygame.display.update()
-            pygame.display.update()
+            for event in pygame.event.get(): # gets the pygame event so we can detect a quit
+                board.drawBoard(self.WIN) # draws the board
+                num = play.move(PL, self.WIN) # gets the column that is selected on each turn
+                board.updateBoard(num, PL, self.WIN) # updates the board
+                if PL == 1: # if player one's turn switch it to player 2
+                    PL = 2
+                else: # if player two's turn switch to player 1
+                    PL = 1
+                pygame.display.update()
+        pygame.display.update()
