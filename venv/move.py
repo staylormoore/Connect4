@@ -1,13 +1,12 @@
 import pygame
 from pygame import mouse
-
 from constants import BLACK, WIDTH, HEIGHT, WHITE, YELLOW, RED, AQUA
+
 class Play:
-    # def __init__(self, player, ):
-       #  self.player = player
 
     def Winner(self):
         return False
+
 
     def move(self, player, WIN):
         while self.Winner() == False:

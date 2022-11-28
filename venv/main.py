@@ -20,9 +20,9 @@ class Main:
             clock.tick(60)
             for event in pygame.event.get():
                 while play.Winner() == False:
-                    board.draw_squares(self.WIN)
+                    board.drawBoard(self.WIN)
                     num = play.move(PL, self.WIN)
-                    board.fall(num, PL, self.WIN)
+                    board.updateBoard(num, PL, self.WIN)
                     if PL == 1:
                         PL = 2
                     else:
