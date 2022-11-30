@@ -1,5 +1,5 @@
 import pygame
-
+# This class makes it easier for us to have our constants in ne place
 WIDTH, HEIGHT = 1000, 700
 ROWS, COLS = 6, 7
 SQUARE_SIZE = 106
