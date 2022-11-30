@@ -26,4 +26,6 @@ class Main:
                 else: # if player two's turn switch to player 1
                     PL = 1
                 pygame.display.update()
+        if board.Winner() == True:
+            return PL
         pygame.display.update()
