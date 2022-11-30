@@ -11,6 +11,7 @@ class Board:
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0]]
 
+
     def drawBoard(self, win): # Draws the board with circles corrisponding to if the hole is empty, owned by player 1, or owned by player 2
         win.fill(AQUA)
         for col in range(len(self.board[0])): # goes through each column to assign color chip
@@ -45,8 +46,38 @@ class Board:
         num = 5
         if self.IsFull(col) == False: # if the col they selected is not full
             for row in range(6): # repeats for all rows to find the lowest possible one
-                if self.board[num][col] == 0: # if the slot is available (ep=mpty)
+                if self.board[num][col] == 0: # if the slot is available (empty)
                     pos = num
                     break
                 num = num - 1
             self.board[pos][col] = (PL) # sets the empty slot to the corrisponding number for the player
+
+    def Winner(self):  # checks if there is a winner and returns true if so
+        # check horizontal for win
+        for c in range(7):
+            for r in range(6):
+                piece = self.board[r][c]
+                if piece !=0 and self.board[r][c + 1] == piece and self.board[r][c + 2] == piece and self.board[r][c + 3] == piece:
+                    return True
+
+        # Check vertical locations for win
+        for c in range(7):
+            for r in range(6):
+                piece = self.board[r][c]
+                if piece !=0 and self.board[r + 1][c] == piece and self.board[r + 2][c] == piece and self.board[r + 3][c] == piece:
+                    return True
+
+        # Check positively sloped diaganols
+        for c in range(7):
+            for r in range(6):
+                piece = self.board[r][c]
+                if piece !=0 and self.board[r + 1][c + 1] == piece and self.board[r + 2][c + 2] == piece and self.board[r + 3][c + 3] == piece:
+                    return True
+
+        # Check negatively sloped diaganols
+        for c in range(7):
+            for r in range(6):
+                piece = self.board[r][c]
+                if piece !=0 and self.board[r - 1][c + 1] == piece and self.board[r - 2][c + 2] == piece and self.board[r - 3][c + 3] == piece:
+                    return True
+        return False

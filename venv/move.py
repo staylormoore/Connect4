@@ -1,15 +1,13 @@
 import pygame
 from pygame import mouse
 from constants import BLACK, WIDTH, HEIGHT, WHITE, YELLOW, RED, AQUA
+from board import Board
 
+board = Board()
 class Play:
 
-    def Winner(self): # checks if there is a winner and returns true if so
-        return False
-
-
     def move(self, player, WIN): # occurs on each players turn
-        while self.Winner() == False: # while a winner has not been found yet
+        while board.Winner() == False: # while a winner has not been found yet
             for event in pygame.event.get(): # documents any events so we can see the mouse has been clicked
                 pygame.init()
                 font = pygame.font.Font('freesansbold.ttf', 32)
