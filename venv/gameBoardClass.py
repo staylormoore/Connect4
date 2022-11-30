@@ -9,6 +9,11 @@ class Gameboard:
     GREEN = (0, 255, 0)
     RED = (255, 50, 64)
     AQUA = (24, 116, 205)
+    GRAY = (217, 217, 217)
+    YELLOW = (255, 255, 0)
+    WIDTH, HEIGHT = 1000, 700
+    ROWS, COLS = 6, 7
+    SQUARE_SIZE = 106
 
     pygame.init()
     main = Main()
@@ -34,7 +39,7 @@ class Gameboard:
     instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
-    logo = pygame.image.load("/Users/sammacbookpro/PycharmProjects/Adv-python/Connect4/venv/Connect4copy.png").convert()
+    logo = pygame.image.load("/Users/devoncleaver/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
 
     pygame.mixer.music.load("pygamemusic.mp3")
     pygame.mixer.music.play(-1)

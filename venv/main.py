@@ -15,7 +15,7 @@ class Main:
         board = Board()
         play = Play()
         PL = 1
-        while play.Winner() == False: # while there is no winner
+        while board.Winner() == False: # while there is no winner
             clock.tick(60)
             for event in pygame.event.get(): # gets the pygame event so we can detect a quit
                 board.drawBoard(self.WIN) # draws the board
