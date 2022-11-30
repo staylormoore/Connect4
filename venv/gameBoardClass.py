@@ -34,7 +34,10 @@ class Gameboard:
     instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
-    logo = pygame.image.load("/Users/devoncleaver/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
+    logo = pygame.image.load("/Users/sammacbookpro/PycharmProjects/Adv-python/Connect4/venv/Connect4copy.png").convert()
+
+    pygame.mixer.music.load("pygamemusic.mp3")
+    pygame.mixer.music.play(-1)
 
     # -------- Instruction Page Loop -----------
     while not done and display_instructions:
@@ -58,8 +61,8 @@ class Gameboard:
             screen.blit(text, [300, 165])
             screen.blit(logo, (115, 225))
 
-            text = font.render("(Click to Continue)", True, RED)
-            screen.blit(text, [380, 465])
+            text = font.render("(Click Screen to Continue)", True, RED)
+            screen.blit(text, [340, 465])
 
         if instruction_page == 2:
             # Draw instructions, page 2
