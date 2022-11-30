@@ -122,16 +122,17 @@ class Gameboard:
     # -------- Main Program Loop -----------
     while not done:
         for event in pygame.event.get():
-            main.main()
+            PL = main.main()
+            screen.fill(BLACK)
+            text = subtitle.render("Player " + str(PL) + " Wins!", True, RED)
+            screen.blit(text, [380, 300])
             if event.type == pygame.QUIT:
                 done = True
-
         # Limit to 60 frames per second
         clock.tick(60)
 
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
-
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     pygame.quit()

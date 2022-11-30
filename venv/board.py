@@ -54,7 +54,7 @@ class Board:
 
     def Winner(self):  # checks if there is a winner and returns true if so
         # check horizontal for win
-        for c in range(7):
+        for c in range(3):
             for r in range(6):
                 piece = self.board[r][c]
                 if piece !=0 and self.board[r][c + 1] == piece and self.board[r][c + 2] == piece and self.board[r][c + 3] == piece:
@@ -62,22 +62,22 @@ class Board:
 
         # Check vertical locations for win
         for c in range(7):
-            for r in range(6):
+            for r in range(3):
                 piece = self.board[r][c]
                 if piece !=0 and self.board[r + 1][c] == piece and self.board[r + 2][c] == piece and self.board[r + 3][c] == piece:
                     return True
 
         # Check positively sloped diaganols
-        for c in range(7):
-            for r in range(6):
-                piece = self.board[r][c]
-                if piece !=0 and self.board[r + 1][c + 1] == piece and self.board[r + 2][c + 2] == piece and self.board[r + 3][c + 3] == piece:
-                    return True
+        #for c in range(7):
+            #for r in range(6):
+                #piece = self.board[r][c]
+                #if piece !=0 and self.board[r + 1][c + 1] == piece and self.board[r + 2][c + 2] == piece and self.board[r + 3][c + 3] == piece:
+                    #return True
 
         # Check negatively sloped diaganols
-        for c in range(7):
-            for r in range(6):
-                piece = self.board[r][c]
-                if piece !=0 and self.board[r - 1][c + 1] == piece and self.board[r - 2][c + 2] == piece and self.board[r - 3][c + 3] == piece:
-                    return True
+        #for c in range(7):
+            #for r in range(6):
+                #piece = self.board[r][c]
+                #if piece !=0 and self.board[r - 1][c + 1] == piece and self.board[r - 2][c + 2] == piece and self.board[r - 3][c + 3] == piece:
+                    #return True
         return False

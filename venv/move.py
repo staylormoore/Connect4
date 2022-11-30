@@ -30,7 +30,6 @@ class Play:
                         return 5
                     elif mx >= 795 and mx <= 855 and my >= 640 and my <= 690: # if the seventh column is chosen
                         return 6
-                    print(player)
                     pygame.display.update()
                 pygame.display.update()
             pygame.display.update()
