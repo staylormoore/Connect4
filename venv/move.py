@@ -5,15 +5,18 @@ from board import Board
 
 board = Board()
 class Play:
-
+#hi
     def move(self, player, WIN): # occurs on each players turn
         while board.Winner() == False: # while a winner has not been found yet
             pygame.init()
             font = pygame.font.Font('freesansbold.ttf', 32)
             text = font.render(('Player ' + str(player)), True, BLACK)
             WIN.blit(text, [10, 110])
+            click = pygame.mixer.Sound("singleclick.wav")
             for event in pygame.event.get(): # documents any events so we can see the mouse has been clicked
                 if event.type == pygame.MOUSEBUTTONDOWN: # if the mouse is pressed
+                    pygame.mixer.Sound.play(click)
+                    pygame.mixer.music.stop()
                     mx, my = mouse.get_pos() # collects the coordinates of the mouse click
                     if mx >= 165 and mx <= 225 and my >= 640 and my <= 690: # if the first column is chosen
                         return 0
