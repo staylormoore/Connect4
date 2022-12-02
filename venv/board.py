@@ -68,16 +68,16 @@ class Board:
                     return True
 
         # Check positively sloped diaganols
-        #for c in range(7):
-            #for r in range(6):
-                #piece = self.board[r][c]
-                #if piece !=0 and self.board[r + 1][c + 1] == piece and self.board[r + 2][c + 2] == piece and self.board[r + 3][c + 3] == piece:
-                    #return True
+        for c in range(4):
+            for r in range(3):
+                piece = self.board[r][c]
+                if piece !=0 and self.board[r + 1][c + 1] == piece and self.board[r + 2][c + 2] == piece and self.board[r + 3][c + 3] == piece:
+                    return True
 
         # Check negatively sloped diaganols
-        #for c in range(7):
-            #for r in range(6):
-                #piece = self.board[r][c]
-                #if piece !=0 and self.board[r - 1][c + 1] == piece and self.board[r - 2][c + 2] == piece and self.board[r - 3][c + 3] == piece:
-                    #return True
+        for c in range(4):
+            for r in range(3):
+                piece = self.board[r][c + 3]
+                if piece !=0 and self.board[r + 1][c + 2] == piece and self.board[r + 2][c + 1] == piece and self.board[r + 3][c] == piece:
+                    return True
         return False
