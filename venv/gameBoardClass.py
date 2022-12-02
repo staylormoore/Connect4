@@ -1,4 +1,3 @@
-# gameboard class
 import pygame
 from main import Main
 

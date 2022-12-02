@@ -1,6 +1,7 @@
 import pygame
 from constants import GRAY, AQUA, ROWS, WHITE, SQUARE_SIZE, COLS, YELLOW, RED
 
+
 class Board:
     # sets the array for the board
     def __init__(self):
@@ -52,9 +53,10 @@ class Board:
                 num = num - 1
             self.board[pos][col] = (PL) # sets the empty slot to the corrisponding number for the player
 
+
     def Winner(self):  # checks if there is a winner and returns true if so
         # check horizontal for win
-        for c in range(3):
+        for c in range(4):
             for r in range(6):
                 piece = self.board[r][c]
                 if piece !=0 and self.board[r][c + 1] == piece and self.board[r][c + 2] == piece and self.board[r][c + 3] == piece:
