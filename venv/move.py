@@ -1,35 +1,60 @@
 import pygame
 from pygame import mouse
+
 from constants import BLACK, WIDTH, HEIGHT, WHITE, YELLOW, RED, AQUA
-from board import Board
 
-board = Board()
+
 class Play:
+    # def __init__(self, player, ):
+    #  self.player = player
 
-    def move(self, player, WIN): # occurs on each players turn
-        while board.Winner() == False: # while a winner has not been found yet
-            for event in pygame.event.get(): # documents any events so we can see the mouse has been clicked
+    def Winner(self):
+        return False
+
+    def button(self, WIN, event):
+        color_light = RED  # light shade of the button
+        color_dark = (205, 38, 38)  # dark shade of the button
+        small_font = pygame.font.SysFont('Roboto', 35)
+        text = small_font.render('QUIT', True, WHITE)  # rendering a text written in this font
+        mx, my = mouse.get_pos()  # gets the position of the mouse
+        if 20 <= mx <= 120 and 600 <= my <= 640:  # if mouse is hovered over the button, it changes to lighter shade
+            pygame.draw.rect(WIN, color_light, [20, 600, 120, 40])
+        else:
+            pygame.draw.rect(WIN, color_dark, [20, 600, 120, 40])
+        WIN.blit(text, (48, 610))  # superimposing the text onto the button
+        pygame.display.update()  # updates the frames of the game
+        if event.type == pygame.MOUSEBUTTONDOWN:  # if the mouse is clicked on the button the game is terminated
+            if 20 <= mx <= 120 and 600 <= my <= 640:  # only when the button is
+                # clicked
+                pygame.quit()
+
+    def move(self, player, WIN):
+        while not self.Winner():
+            for event in pygame.event.get():
                 pygame.init()
-                font = pygame.font.Font('freesansbold.ttf', 32)
-                text = font.render(('Player ' + str(player)), True, BLACK)
+                font = pygame.font.SysFont('Roboto', 40)
+                text = font.render(('Player ' + str(player)), True, WHITE)
                 WIN.blit(text, [10, 110])
-                if event.type == pygame.MOUSEBUTTONDOWN: # if the mouse is pressed
+                if event.type == pygame.MOUSEBUTTONDOWN:
                     # click sound goes here
-                    mx, my = mouse.get_pos() # collects the coordinates of the mouse click
-                    if mx >= 165 and mx <= 225 and my >= 640 and my <= 690: # if the first column is chosen
+                    mx, my = mouse.get_pos()
+                    if 165 <= mx <= 225 and 640 <= my <= 690:
                         return 0
-                    elif mx >= 270 and mx <= 330 and my >= 640 and my <= 690: # if the second column is chosen
+                    elif 270 <= mx <= 330 and 640 <= my <= 690:
                         return 1
-                    elif mx >= 375 and mx <= 435 and my >= 640 and my <= 690: # if the third column is chosen
+                    elif 375 <= mx <= 435 and 640 <= my <= 690:
                         return 2
-                    elif mx >= 480 and mx <= 540 and my >= 640 and my <= 690: # if the fourth column is chosen
+                    elif 480 <= mx <= 540 and 640 <= my <= 690:
                         return 3
-                    elif mx >= 585 and mx <= 645 and my >= 640 and my <= 690: # if the fifth column is chosen
+                    elif 585 <= mx <= 645 and 640 <= my <= 690:
                         return 4
-                    elif mx >= 690 and mx <= 750 and my >= 640 and my <= 690: # if the sixth column is chosen
+                    elif 690 <= mx <= 750 and my >= 640 and my <= 690:
                         return 5
-                    elif mx >= 795 and mx <= 855 and my >= 640 and my <= 690: # if the seventh column is chosen
+                    elif 795 <= mx <= 855 and 640 <= my <= 690:
                         return 6
+                    print(player)
                     pygame.display.update()
                 pygame.display.update()
+
+                self.button(WIN, event)
             pygame.display.update()
