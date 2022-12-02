@@ -39,7 +39,7 @@ class Gameboard:
     instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
-    logo = pygame.image.load("/Users/carolinenorton/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
+    logo = pygame.image.load("/Users/devoncleaver/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
 
     pygame.mixer.music.load("pygamemusic.mp3")
     pygame.mixer.music.play(-1)
