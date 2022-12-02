@@ -17,14 +17,13 @@ class Main:
         PL = 1
         while board.Winner() == False: # while there is no winner
             clock.tick(60)
-            for event in pygame.event.get(): # gets the pygame event so we can detect a quit
-                board.drawBoard(self.WIN) # draws the board
-                num = play.move(PL, self.WIN) # gets the column that is selected on each turn
-                board.updateBoard(num, PL, self.WIN) # updates the board
-                if PL == 1: # if player one's turn switch it to player 2
-                    PL = 2
-                else: # if player two's turn switch to player 1
-                    PL = 1
+            board.drawBoard(self.WIN) # draws the board
+            num = play.move(PL, self.WIN) # gets the column that is selected on each turn
+            board.updateBoard(num, PL, self.WIN) # updates the board
+            if PL == 1: # if player one's turn switch it to player 2
+                PL = 2
+            else: # if player two's turn switch to player 1
+                PL = 1
                 pygame.display.update()
         if board.Winner() == True:
             if PL == 1:  # if player one's turn switch it to player 2

@@ -2,6 +2,7 @@
 import pygame
 from main import Main
 
+
 class Gameboard:
     # Define colors
     BLACK = (0, 0, 0)
@@ -39,7 +40,7 @@ class Gameboard:
     instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
-    logo = pygame.image.load("/Users/devoncleaver/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
+    logo = pygame.image.load("/Users/carolinenorton/PycharmProjects/Connect4/venv/Connect4copy.png").convert()
 
     pygame.mixer.music.load("pygamemusic.mp3")
     pygame.mixer.music.play(-1)
@@ -67,7 +68,7 @@ class Gameboard:
             screen.blit(logo, (115, 225))
 
             text = font.render("(Click Screen to Continue)", True, RED)
-            screen.blit(text, [340, 465])
+            screen.blit(text, [300, 465])
 
         if instruction_page == 2:
             # Draw instructions, page 2
@@ -81,35 +82,35 @@ class Gameboard:
             screen.blit(text, [10, 90])
 
             text = subtitle.render("Instructions:", True, RED)
-            screen.blit(text, [10, 130])
+            screen.blit(text, [10, 180])
 
             text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
-            screen.blit(text, [10, 190])
+            screen.blit(text, [10, 230])
 
             text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
-            screen.blit(text, [10, 220])
+            screen.blit(text, [10, 270])
 
             text = font.render("2. You can win by getting 4 in a row horizontally, vertically,", True,
                                WHITE)
-            screen.blit(text, [10, 265])
+            screen.blit(text, [10, 315])
 
             text = font.render("    or diagonally", True,
                                WHITE)
-            screen.blit(text, [10, 293])
+            screen.blit(text, [10, 343])
 
             text = font.render("3. Once it is your turn, click the button at the bottom of the column", True,
                                WHITE)
-            screen.blit(text, [10, 334])
+            screen.blit(text, [10, 384])
 
             text = font.render("    you would like to play in", True, WHITE)
-            screen.blit(text, [10, 365])
+            screen.blit(text, [10, 415])
 
             text = font.render("4. If you would like to go back to the instructions page or quit use ", True,
                                WHITE)
-            screen.blit(text, [10, 420])
+            screen.blit(text, [10, 470])
 
             text = font.render("    the corresponding buttons on the left", True, WHITE)
-            screen.blit(text, [10, 457])
+            screen.blit(text, [10, 507])
 
         # Limit to 60 frames per second
         clock.tick(60)
@@ -125,7 +126,7 @@ class Gameboard:
             PL = main.main()
             screen.fill(BLACK)
             text = subtitle.render("Player " + str(PL) + " Wins!", True, RED)
-            screen.blit(text, [380, 300])
+            screen.blit(text, [360, 300])
             if event.type == pygame.QUIT:
                 done = True
         # Limit to 60 frames per second
@@ -133,6 +134,7 @@ class Gameboard:
 
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
+
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     pygame.quit()
