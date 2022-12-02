@@ -11,22 +11,37 @@ class Play:
     def Winner(self):
         return False
 
-    def button(self, WIN, event):
+    def quit_button(self, WIN, event):
         color_light = RED  # light shade of the button
         color_dark = (205, 38, 38)  # dark shade of the button
         small_font = pygame.font.SysFont('Roboto', 35)
         text = small_font.render('QUIT', True, WHITE)  # rendering a text written in this font
         mx, my = mouse.get_pos()  # gets the position of the mouse
-        if 20 <= mx <= 120 and 600 <= my <= 640:  # if mouse is hovered over the button, it changes to lighter shade
-            pygame.draw.rect(WIN, color_light, [20, 600, 120, 40])
+        if 20 <= mx <= 120 and 650 <= my <= 690:  # if mouse is hovered over the button, it changes to lighter shade
+            pygame.draw.rect(WIN, color_light, [20, 650, 120, 40])
         else:
-            pygame.draw.rect(WIN, color_dark, [20, 600, 120, 40])
-        WIN.blit(text, (48, 610))  # superimposing the text onto the button
+            pygame.draw.rect(WIN, color_dark, [20, 650, 120, 40])
+        WIN.blit(text, (48, 660))  # superimposing the text onto the button
         pygame.display.update()  # updates the frames of the game
         if event.type == pygame.MOUSEBUTTONDOWN:  # if the mouse is clicked on the button the game is terminated
-            if 20 <= mx <= 120 and 600 <= my <= 640:  # only when the button is
-                # clicked
+            if 20 <= mx <= 120 and 650 <= my <= 690:  # only when the button is clicked
                 pygame.quit()
+
+    def instructions_button(self, WIN, event):
+        color_light = (0, 255, 0)  # light shade of the button
+        color_dark = (0, 205, 0)  # dark shade of the button
+        small_font = pygame.font.SysFont('Roboto', 26)
+        text = small_font.render('Instructions', True, WHITE)  # rendering a text written in this font
+        mx, my = mouse.get_pos()  # gets the position of the mouse
+        if 20 <= mx <= 120 and 590 <= my <= 630:  # if mouse is hovered over the button, it changes to lighter shade
+            pygame.draw.rect(WIN, color_light, [20, 590, 120, 40])
+        else:
+            pygame.draw.rect(WIN, color_dark, [20, 590, 120, 40])
+        WIN.blit(text, (30, 600))  # superimposing the text onto the button
+        pygame.display.update()  # updates the frames of the game
+        if event.type == pygame.MOUSEBUTTONDOWN:  # if the mouse is clicked on the button the game is terminated
+            if 20 <= mx <= 120 and 590 <= my <= 630:  # only when the button is clicked
+                gameBoardClass.instructions(2, True, False)
 
     def move(self, player, WIN):
         while not self.Winner():
@@ -55,6 +70,6 @@ class Play:
                     print(player)
                     pygame.display.update()
                 pygame.display.update()
-
-                self.button(WIN, event)
+                self.quit_button(WIN, event)  # runs to check if the quit button is clicked
+                self.instructions_button(WIN, event)
             pygame.display.update()

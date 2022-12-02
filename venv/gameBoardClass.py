@@ -2,6 +2,7 @@
 import pygame
 from main import Main
 
+
 class Gameboard:
     # Define colors
     BLACK = (0, 0, 0)
@@ -20,7 +21,7 @@ class Gameboard:
     pygame.display.set_caption("Welcome to Connect 4")
 
     # Loop until the user clicks the close button.
-    done = False
+    # done = False
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
@@ -30,8 +31,8 @@ class Gameboard:
     subtitle = pygame.font.SysFont('Roboto', 50)
     font = pygame.font.SysFont('Roboto', 36)
 
-    display_instructions = True
-    instruction_page = 1
+    #  display_instructions = True
+    #  instruction_page = 1
 
     # create a surface object for the Connect4 logo, image is drawn on it
     logo = pygame.image.load("/Users/sammacbookpro/PycharmProjects/Adv-python/Connect4/venv/Connect4copy.png").convert()
@@ -39,58 +40,47 @@ class Gameboard:
     pygame.mixer.music.load("pygamemusic.mp3")
     pygame.mixer.music.play(-1)
 
-    # -------- Instruction Page Loop -----------
-    while not done and display_instructions:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                instruction_page += 1
-                if instruction_page == 3:
-                    display_instructions = False
+    def instructions(self, display, page, done):
+        # -------- Instruction Page Loop -----------
+        while not done and display:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    done = True
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    page += 1
+                    if page == 3:
+                        display = False
+            screen.fill(BLACK)  # Set the screen background
 
-        # Set the screen background
-        screen.fill(BLACK)
+            if page == 1:  # Draw the welcome page with the logo
+                text = title_font.render("Welcome to", True, RED)
+                screen.blit(text, [300, 165])
+                screen.blit(logo, (115, 225))
+                text = font.render("(Click Screen to Continue)", True, RED)
+                screen.blit(text, [340, 465])
 
-        if instruction_page == 1:
-            # Draw instructions, page 1
-            # This could also load an image created in another program.
-            # That could be both easier and more flexible.
+            if page == 2:  # Draw instructions, page 2
+                text = subtitle.render("Goal of the Game:", True, RED)
+                screen.blit(text, [10, 10])
+                text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
+                screen.blit(text, [10, 60])
+                text = subtitle.render("Instructions:", True, RED)
+                screen.blit(text, [10, 110])
+                text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
+                screen.blit(text, [10, 150])
+                text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
+                screen.blit(text, [10, 180])
+                text = font.render("2. You can win by getting 4 in a row horizontally, vertically, or diagonally", True,
+                                   WHITE)
+                screen.blit(text, [10, 220])
 
-            text = title_font.render("Welcome to", True, RED)
-            screen.blit(text, [300, 165])
-            screen.blit(logo, (115, 225))
+            # Limit to 60 frames per second
+            clock.tick(60)
 
-            text = font.render("(Click Screen to Continue)", True, RED)
-            screen.blit(text, [340, 465])
+            # Go ahead and update the screen with what we've drawn.
+            pygame.display.flip()
 
-        if instruction_page == 2:
-            # Draw instructions, page 2
-            text = subtitle.render("Goal of the Game:", True, RED)
-            screen.blit(text, [10, 10])
-
-            text = font.render("The goal of Connect 4 is to get 4 discs in a row before your opponent", True, WHITE)
-            screen.blit(text, [10, 60])
-
-            text = subtitle.render("Instructions:", True, RED)
-            screen.blit(text, [10, 110])
-
-            text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
-            screen.blit(text, [10, 150])
-
-            text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
-            screen.blit(text, [10, 180])
-
-            text = font.render("2. You can win by getting 4 in a row horizontally, vertically, or diagonally", True,
-                               WHITE)
-            screen.blit(text, [10, 220])
-
-        # Limit to 60 frames per second
-        clock.tick(60)
-
-        # Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
-
+    self.instructions(True, 1, False)
 
     # -------- Main Program Loop -----------
     while not done:
@@ -98,7 +88,6 @@ class Gameboard:
             main.main()
             if event.type == pygame.QUIT:
                 done = True
-
 
         # Limit to 60 frames per second
         clock.tick(60)
