@@ -1,3 +1,4 @@
+# gameboard class
 import pygame
 from main import Main
 
@@ -45,13 +46,13 @@ class Gameboard:
     pygame.mixer.music.play(-1)
 
     # -------- Instruction Page Loop -----------
-    while not done and display_instructions:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+    while not done and display_instructions: # while the game isn't done and the instructions isnt done
+        for event in pygame.event.get(): # records the events to detect clicks
+            if event.type == pygame.QUIT: # if the game is quit
                 done = True
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN: # if the mouse is clicked
                 instruction_page += 1
-                if instruction_page == 3:
+                if instruction_page == 3: # if we are on the final instruction page
                     display_instructions = False
 
         # Set the screen background
@@ -86,7 +87,7 @@ class Gameboard:
             text = font.render('1. Each player alternates droppings discs into the gameboard until ', True, WHITE)
             screen.blit(text, [10, 230])
 
-            text = font.render('    one player gets 4 in a row or someone runs out of discs', True, WHITE)
+            text = font.render('    one player gets 4 in a row', True, WHITE)
             screen.blit(text, [10, 270])
 
             text = font.render("2. You can win by getting 4 in a row horizontally, vertically,", True,
@@ -104,11 +105,11 @@ class Gameboard:
             text = font.render("    you would like to play in", True, WHITE)
             screen.blit(text, [10, 415])
 
-            text = font.render("4. If you would like to go back to the instructions page or quit use ", True,
+            text = font.render("4. If you would like to quit the game use the corresponding ", True,
                                WHITE)
             screen.blit(text, [10, 470])
 
-            text = font.render("    the corresponding buttons on the left", True, WHITE)
+            text = font.render("    button on the left", True, WHITE)
             screen.blit(text, [10, 507])
 
         # Limit to 60 frames per second
@@ -120,13 +121,13 @@ class Gameboard:
 
 
     # -------- Main Program Loop -----------
-    while not done:
-        for event in pygame.event.get():
+    while not done: # while the game is not finished
+        for event in pygame.event.get():  # records the events that occur
             PL = main.main()
             screen.fill(BLACK)
             text = subtitle.render("Player " + str(PL) + " Wins!", True, RED)
-            screen.blit(text, [360, 300])
-            if event.type == pygame.QUIT:
+            screen.blit(text, [340, 300])
+            if event.type == pygame.QUIT: # if the game is quit
                 done = True
         # Limit to 60 frames per second
         clock.tick(60)
